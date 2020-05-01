@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Atmel Studio Solution File, Format Version 11.00
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "Periodische_Ereignisse", "Periodische_Ereignisse.cproj", "{675B8D46-64C5-4FC4-8C30-4A00CFA9EBAF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{675B8D46-64C5-4FC4-8C30-4A00CFA9EBAF}.Debug|AVR.ActiveCfg = Debug|AVR
+		{675B8D46-64C5-4FC4-8C30-4A00CFA9EBAF}.Debug|AVR.Build.0 = Debug|AVR
+		{675B8D46-64C5-4FC4-8C30-4A00CFA9EBAF}.Release|AVR.ActiveCfg = Release|AVR
+		{675B8D46-64C5-4FC4-8C30-4A00CFA9EBAF}.Release|AVR.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
