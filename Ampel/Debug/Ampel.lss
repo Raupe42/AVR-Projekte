@@ -1,0 +1,383 @@
+
+Ampel.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000000  00800100  00800100  00000220  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         000001ac  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          00000002  00800100  00800100  00000220  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  00000220  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000250  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000020  00000000  00000000  00000290  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   000006b1  00000000  00000000  000002b0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 0000061a  00000000  00000000  00000961  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00000338  00000000  00000000  00000f7b  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  00000024  00000000  00000000  000012b4  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    00000356  00000000  00000000  000012d8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00000082  00000000  00000000  0000162e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000010  00000000  00000000  000016b0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+   8:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+   c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  10:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  14:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  18:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  1c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  20:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  24:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  28:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  2c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  30:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  34:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  38:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  3c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  40:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  44:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  48:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  4c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  50:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  54:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  58:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  5c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  60:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  64:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_clear_bss>:
+  74:	21 e0       	ldi	r18, 0x01	; 1
+  76:	a0 e0       	ldi	r26, 0x00	; 0
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	01 c0       	rjmp	.+2      	; 0x7e <.do_clear_bss_start>
+
+0000007c <.do_clear_bss_loop>:
+  7c:	1d 92       	st	X+, r1
+
+0000007e <.do_clear_bss_start>:
+  7e:	a2 30       	cpi	r26, 0x02	; 2
+  80:	b2 07       	cpc	r27, r18
+  82:	e1 f7       	brne	.-8      	; 0x7c <.do_clear_bss_loop>
+  84:	0e 94 48 00 	call	0x90	; 0x90 <main>
+  88:	0c 94 d4 00 	jmp	0x1a8	; 0x1a8 <_exit>
+
+0000008c <__bad_interrupt>:
+  8c:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000090 <main>:
+
+int state = 0;
+
+int main(void)
+{
+	DDRB = ~0;
+  90:	8f ef       	ldi	r24, 0xFF	; 255
+  92:	84 b9       	out	0x04, r24	; 4
+	DDRD = 0;
+  94:	1a b8       	out	0x0a, r1	; 10
+	PORTD = (1<<TASTER);	//PORT Output und PullUp
+  96:	84 e0       	ldi	r24, 0x04	; 4
+  98:	8b b9       	out	0x0b, r24	; 11
+					//PIN Input
+					//damit ist der 0. (0..7) Pin mit PullUp versehen
+	int anforderung = 0;
+	long zaehler = 0;
+  9a:	40 e0       	ldi	r20, 0x00	; 0
+  9c:	50 e0       	ldi	r21, 0x00	; 0
+  9e:	ba 01       	movw	r22, r20
+	DDRB = ~0;
+	DDRD = 0;
+	PORTD = (1<<TASTER);	//PORT Output und PullUp
+					//PIN Input
+					//damit ist der 0. (0..7) Pin mit PullUp versehen
+	int anforderung = 0;
+  a0:	20 e0       	ldi	r18, 0x00	; 0
+  a2:	30 e0       	ldi	r19, 0x00	; 0
+    {
+		if ((PIND &(1<<TASTER)) == 0)	//au�er bit 3 (0..7)ALLES //ausmaskiert, an besagter Stelle transparent
+								//durch PullUp invertierte Logik
+		{
+			//PORTB = PIND;
+			anforderung = 1;
+  a4:	f1 e0       	ldi	r31, 0x01	; 1
+  a6:	e0 e0       	ldi	r30, 0x00	; 0
+					state++;
+
+			}
+			else if (state == 5)	//Ampel erst wieder alle Rot dann norma weiter
+			{
+				state = 3;
+  a8:	a3 e0       	ldi	r26, 0x03	; 3
+  aa:	b0 e0       	ldi	r27, 0x00	; 0
+			zaehler = 0;
+			if (state < 4)
+			{
+				if (anforderung && state == 3)
+				{
+					state = 5;
+  ac:	c5 e0       	ldi	r28, 0x05	; 5
+  ae:	d0 e0       	ldi	r29, 0x00	; 0
+					anforderung = 0;
+  b0:	00 e0       	ldi	r16, 0x00	; 0
+  b2:	10 e0       	ldi	r17, 0x00	; 0
+					//damit ist der 0. (0..7) Pin mit PullUp versehen
+	int anforderung = 0;
+	long zaehler = 0;
+	while (1) 
+    {
+		if ((PIND &(1<<TASTER)) == 0)	//au�er bit 3 (0..7)ALLES //ausmaskiert, an besagter Stelle transparent
+  b4:	4a 9b       	sbis	0x09, 2	; 9
+  b6:	04 c0       	rjmp	.+8      	; 0xc0 <main+0x30>
+		else
+		{
+			if ((PORTB &(1<<GRUEN_KOMMT)) != 0)
+				PORTB &= ~(1<<GRUEN_KOMMT);
+		}*/
+		if (anforderung)
+  b8:	21 15       	cp	r18, r1
+  ba:	31 05       	cpc	r19, r1
+  bc:	29 f0       	breq	.+10     	; 0xc8 <main+0x38>
+  be:	02 c0       	rjmp	.+4      	; 0xc4 <main+0x34>
+    {
+		if ((PIND &(1<<TASTER)) == 0)	//au�er bit 3 (0..7)ALLES //ausmaskiert, an besagter Stelle transparent
+								//durch PullUp invertierte Logik
+		{
+			//PORTB = PIND;
+			anforderung = 1;
+  c0:	2f 2f       	mov	r18, r31
+  c2:	3e 2f       	mov	r19, r30
+		{
+			if ((PORTB &(1<<GRUEN_KOMMT)) != 0)
+				PORTB &= ~(1<<GRUEN_KOMMT);
+		}*/
+		if (anforderung)
+			PORTB |= (1<<GRUEN_KOMMT);
+  c4:	2b 9a       	sbi	0x05, 3	; 5
+  c6:	01 c0       	rjmp	.+2      	; 0xca <main+0x3a>
+		else
+			PORTB &= ~(1<<GRUEN_KOMMT);
+  c8:	2b 98       	cbi	0x05, 3	; 5
+		switch (state)
+  ca:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <_edata>
+  ce:	90 91 01 01 	lds	r25, 0x0101	; 0x800101 <_edata+0x1>
+  d2:	83 30       	cpi	r24, 0x03	; 3
+  d4:	91 05       	cpc	r25, r1
+  d6:	c9 f0       	breq	.+50     	; 0x10a <main+0x7a>
+  d8:	34 f4       	brge	.+12     	; 0xe6 <main+0x56>
+  da:	81 30       	cpi	r24, 0x01	; 1
+  dc:	91 05       	cpc	r25, r1
+  de:	49 f0       	breq	.+18     	; 0xf2 <main+0x62>
+  e0:	02 97       	sbiw	r24, 0x02	; 2
+  e2:	69 f0       	breq	.+26     	; 0xfe <main+0x6e>
+  e4:	23 c0       	rjmp	.+70     	; 0x12c <main+0x9c>
+  e6:	84 30       	cpi	r24, 0x04	; 4
+  e8:	91 05       	cpc	r25, r1
+  ea:	a9 f0       	breq	.+42     	; 0x116 <main+0x86>
+  ec:	05 97       	sbiw	r24, 0x05	; 5
+  ee:	c9 f0       	breq	.+50     	; 0x122 <main+0x92>
+  f0:	1d c0       	rjmp	.+58     	; 0x12c <main+0x9c>
+		{
+			case 1 : //auto gr�n
+			PORTB |= (1 << AUTO_GRUEN);	//an
+  f2:	28 9a       	sbi	0x05, 0	; 5
+			PORTB &= ~(1 << AUTO_GELB);	//aus
+  f4:	29 98       	cbi	0x05, 1	; 5
+			PORTB &= ~(1 << AUTO_ROT);	//aus
+  f6:	2a 98       	cbi	0x05, 2	; 5
+			PORTB &= ~(1 << LEUTE_GRUEN);//aus
+  f8:	2c 98       	cbi	0x05, 4	; 5
+			PORTB |= (1 << LEUTE_ROT);	//an
+  fa:	2d 9a       	sbi	0x05, 5	; 5
+			break;
+  fc:	17 c0       	rjmp	.+46     	; 0x12c <main+0x9c>
+			case 2:	// Auto Gelb 
+			PORTB &= ~(1 << AUTO_GRUEN);
+  fe:	28 98       	cbi	0x05, 0	; 5
+			PORTB |= (1 << AUTO_GELB);
+ 100:	29 9a       	sbi	0x05, 1	; 5
+			PORTB &= ~(1 << AUTO_ROT);
+ 102:	2a 98       	cbi	0x05, 2	; 5
+			PORTB &= ~(1 << LEUTE_GRUEN);
+ 104:	2c 98       	cbi	0x05, 4	; 5
+			PORTB |= (1 << LEUTE_ROT);
+ 106:	2d 9a       	sbi	0x05, 5	; 5
+			break;
+ 108:	11 c0       	rjmp	.+34     	; 0x12c <main+0x9c>
+			case 3:	// Auto Rot
+			PORTB &= ~(1 << AUTO_GRUEN);
+ 10a:	28 98       	cbi	0x05, 0	; 5
+			PORTB &= ~(1 << AUTO_GELB);
+ 10c:	29 98       	cbi	0x05, 1	; 5
+			PORTB |= (1 << AUTO_ROT);
+ 10e:	2a 9a       	sbi	0x05, 2	; 5
+			PORTB &= ~(1 << LEUTE_GRUEN);
+ 110:	2c 98       	cbi	0x05, 4	; 5
+			PORTB |= (1 << LEUTE_ROT);
+ 112:	2d 9a       	sbi	0x05, 5	; 5
+			break;
+ 114:	0b c0       	rjmp	.+22     	; 0x12c <main+0x9c>
+			case 4:	// Auto Gelb + Rot
+			PORTB &= ~(1 << AUTO_GRUEN);
+ 116:	28 98       	cbi	0x05, 0	; 5
+			PORTB |= (1 << AUTO_GELB);
+ 118:	29 9a       	sbi	0x05, 1	; 5
+			PORTB |= (1 << AUTO_ROT);
+ 11a:	2a 9a       	sbi	0x05, 2	; 5
+			PORTB &= ~(1 << LEUTE_GRUEN);
+ 11c:	2c 98       	cbi	0x05, 4	; 5
+			PORTB |= (1 << LEUTE_ROT);
+ 11e:	2d 9a       	sbi	0x05, 5	; 5
+			break;
+ 120:	05 c0       	rjmp	.+10     	; 0x12c <main+0x9c>
+			case 5:	// Auto Rot, Leute Grün
+			PORTB &= ~(1 << AUTO_GRUEN);
+ 122:	28 98       	cbi	0x05, 0	; 5
+			PORTB &= ~(1 << AUTO_GELB);
+ 124:	29 98       	cbi	0x05, 1	; 5
+			PORTB |= (1 << AUTO_ROT);
+ 126:	2a 9a       	sbi	0x05, 2	; 5
+			PORTB |= (1 << LEUTE_GRUEN);
+ 128:	2c 9a       	sbi	0x05, 4	; 5
+			PORTB &= ~(1 << LEUTE_ROT);
+ 12a:	2d 98       	cbi	0x05, 5	; 5
+			
+			break;
+			default:;
+		}
+		zaehler++;
+ 12c:	4f 5f       	subi	r20, 0xFF	; 255
+ 12e:	5f 4f       	sbci	r21, 0xFF	; 255
+ 130:	6f 4f       	sbci	r22, 0xFF	; 255
+ 132:	7f 4f       	sbci	r23, 0xFF	; 255
+		if (zaehler >= GRUNDTAKT)
+ 134:	40 32       	cpi	r20, 0x20	; 32
+ 136:	81 ea       	ldi	r24, 0xA1	; 161
+ 138:	58 07       	cpc	r21, r24
+ 13a:	87 e0       	ldi	r24, 0x07	; 7
+ 13c:	68 07       	cpc	r22, r24
+ 13e:	71 05       	cpc	r23, r1
+ 140:	0c f4       	brge	.+2      	; 0x144 <main+0xb4>
+ 142:	b8 cf       	rjmp	.-144    	; 0xb4 <main+0x24>
+		{
+			zaehler = 0;
+			if (state < 4)
+ 144:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <_edata>
+ 148:	90 91 01 01 	lds	r25, 0x0101	; 0x800101 <_edata+0x1>
+ 14c:	84 30       	cpi	r24, 0x04	; 4
+ 14e:	91 05       	cpc	r25, r1
+ 150:	cc f4       	brge	.+50     	; 0x184 <main+0xf4>
+			{
+				if (anforderung && state == 3)
+ 152:	21 15       	cp	r18, r1
+ 154:	31 05       	cpc	r19, r1
+ 156:	69 f0       	breq	.+26     	; 0x172 <main+0xe2>
+ 158:	83 30       	cpi	r24, 0x03	; 3
+ 15a:	91 05       	cpc	r25, r1
+ 15c:	51 f4       	brne	.+20     	; 0x172 <main+0xe2>
+				{
+					state = 5;
+ 15e:	d0 93 01 01 	sts	0x0101, r29	; 0x800101 <_edata+0x1>
+ 162:	c0 93 00 01 	sts	0x0100, r28	; 0x800100 <_edata>
+			default:;
+		}
+		zaehler++;
+		if (zaehler >= GRUNDTAKT)
+		{
+			zaehler = 0;
+ 166:	40 e0       	ldi	r20, 0x00	; 0
+ 168:	50 e0       	ldi	r21, 0x00	; 0
+ 16a:	ba 01       	movw	r22, r20
+			if (state < 4)
+			{
+				if (anforderung && state == 3)
+				{
+					state = 5;
+					anforderung = 0;
+ 16c:	20 2f       	mov	r18, r16
+ 16e:	31 2f       	mov	r19, r17
+ 170:	a1 cf       	rjmp	.-190    	; 0xb4 <main+0x24>
+				}
+				else
+					state++;
+ 172:	01 96       	adiw	r24, 0x01	; 1
+ 174:	90 93 01 01 	sts	0x0101, r25	; 0x800101 <_edata+0x1>
+ 178:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <_edata>
+			default:;
+		}
+		zaehler++;
+		if (zaehler >= GRUNDTAKT)
+		{
+			zaehler = 0;
+ 17c:	40 e0       	ldi	r20, 0x00	; 0
+ 17e:	50 e0       	ldi	r21, 0x00	; 0
+ 180:	ba 01       	movw	r22, r20
+ 182:	98 cf       	rjmp	.-208    	; 0xb4 <main+0x24>
+				}
+				else
+					state++;
+
+			}
+			else if (state == 5)	//Ampel erst wieder alle Rot dann norma weiter
+ 184:	05 97       	sbiw	r24, 0x05	; 5
+ 186:	41 f4       	brne	.+16     	; 0x198 <main+0x108>
+			{
+				state = 3;
+ 188:	b0 93 01 01 	sts	0x0101, r27	; 0x800101 <_edata+0x1>
+ 18c:	a0 93 00 01 	sts	0x0100, r26	; 0x800100 <_edata>
+			default:;
+		}
+		zaehler++;
+		if (zaehler >= GRUNDTAKT)
+		{
+			zaehler = 0;
+ 190:	40 e0       	ldi	r20, 0x00	; 0
+ 192:	50 e0       	ldi	r21, 0x00	; 0
+ 194:	ba 01       	movw	r22, r20
+ 196:	8e cf       	rjmp	.-228    	; 0xb4 <main+0x24>
+			else if (state == 5)	//Ampel erst wieder alle Rot dann norma weiter
+			{
+				state = 3;
+			}
+			else
+				state = 1;
+ 198:	f0 93 00 01 	sts	0x0100, r31	; 0x800100 <_edata>
+ 19c:	e0 93 01 01 	sts	0x0101, r30	; 0x800101 <_edata+0x1>
+			default:;
+		}
+		zaehler++;
+		if (zaehler >= GRUNDTAKT)
+		{
+			zaehler = 0;
+ 1a0:	40 e0       	ldi	r20, 0x00	; 0
+ 1a2:	50 e0       	ldi	r21, 0x00	; 0
+ 1a4:	ba 01       	movw	r22, r20
+ 1a6:	86 cf       	rjmp	.-244    	; 0xb4 <main+0x24>
+
+000001a8 <_exit>:
+ 1a8:	f8 94       	cli
+
+000001aa <__stop_program>:
+ 1aa:	ff cf       	rjmp	.-2      	; 0x1aa <__stop_program>
